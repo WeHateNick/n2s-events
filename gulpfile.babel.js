@@ -571,7 +571,7 @@ grunt.initConfig({
         },
         heroku: {
             options: {
-                remote: 'heroku',
+                remote: 'http://github.com/wehatenick/n2s-events',
                 branch: 'master'
             }
         },
