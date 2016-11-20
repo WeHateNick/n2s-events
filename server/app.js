@@ -21,14 +21,6 @@ function startServer() {
   });
 }
 
-// var reqObj = {
-//   'username": "nicolasocampo89@hotmail.com',
-//   'password": "Simple123'
-// };
-// app.post('https://n2sreno.clubspeedtiming.com/api/index.php/customers/login?key=7VlopsPCbJeotMiXdCH4', function (req, res) {
-// 	req.send(reqObj)
-// });
-
 setImmediate(startServer);
 
 // Expose app
