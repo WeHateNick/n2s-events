@@ -16,6 +16,10 @@ export class MainController {
       .then(response => {
         this.awesomeThings = response.data;
       });
+    this.$http.get('/api/login')
+      .then(response => {
+        console.log(response.data);
+      });
   }
 }
 
