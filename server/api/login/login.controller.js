@@ -7,7 +7,7 @@
 
 import request from 'request';
 
-var reqObj = {
+var mockReqObj = {
   'username': 'nicolasocampo89@hotmail.com',
   'password': 'Simple123'
 };
@@ -16,10 +16,13 @@ var endpoint = 'customers/login/';
 const N2S_AUTH_KEY = '7VlopsPCbJeotMiXdCH4';
 // Gets a list of Logins
 export function index(req, res) {
-	if (false) {
+	if (true) {
+		var reqData = req.body.data;
+		console.log('== Request data:');
+		console.log(reqData);
 		request.post(
 	    baseUrl + endpoint + '?key=' + N2S_AUTH_KEY,
-	    { json: reqObj },
+	    { json: reqData },
 	    function (error, response, body) {
 	      if (!error && response.statusCode == 200) {
 	        console.log('NEED 2 SPEED:');
@@ -29,6 +32,7 @@ export function index(req, res) {
 	      else {
 	        console.log('== Login POST Error');
 	        console.log(error);
+					res.json(error).status('500');
 	      }
 	    }
 		);

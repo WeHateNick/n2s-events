@@ -16,10 +16,22 @@ export class MainController {
       .then(response => {
         this.awesomeThings = response.data;
       });
-    this.$http.get('/api/login')
+    this.loginForm = {
+      data: {},
+      loading: false,
+      error: false
+    };
+    var mockData = {content: 'Hello there'};
+    this.login = () => {
+      this.loginForm.loading = true;
+      this.$http.post('/api/login', mockData )
       .then(response => {
-        console.log(response.data);
+        this.loginForm.loading = false;
+        console.log('Login response:', response.data);
+      }, error => {
+        console.log('Login error', error);
       });
+    };
   }
 }
 
