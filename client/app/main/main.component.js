@@ -21,16 +21,15 @@ export class MainController {
       loading: false,
       error: false
     };
-    var mockData = {content: 'Hello there'};
     this.login = () => {
       this.loginForm.loading = true;
-      // this.$http.post('/api/login', mockData )
-      // .then(response => {
-      //   this.loginForm.loading = false;
-      //   console.log('Login response:', response.data);
-      // }, error => {
-      //   console.log('Login error', error);
-      // });
+      this.$http.post('/api/login', this.loginForm.data )
+      .then(response => {
+        this.loginForm.loading = false;
+        console.log('Login response:', response.data);
+      }, error => {
+        console.log('Login error', error);
+      });
     };
     this.cancelLogin = () => {
       this.loginForm.loading = false;
