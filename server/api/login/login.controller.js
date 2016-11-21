@@ -16,19 +16,21 @@ var endpoint = 'customers/login/';
 const N2S_AUTH_KEY = '7VlopsPCbJeotMiXdCH4';
 // Gets a list of Logins
 export function index(req, res) {
-	request.post(
-    baseUrl + endpoint + '?key=' + N2S_AUTH_KEY,
-    { json: reqObj },
-    function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('NEED 2 SPEED:');
-        console.log(body);
-				res.json(body);
-      }
-      else {
-        console.log('== Login POST Error');
-        console.log(error);
-      }
-    }
-	);
+	if (false) {
+		request.post(
+	    baseUrl + endpoint + '?key=' + N2S_AUTH_KEY,
+	    { json: reqObj },
+	    function (error, response, body) {
+	      if (!error && response.statusCode == 200) {
+	        console.log('NEED 2 SPEED:');
+	        console.log(body);
+					res.json(body);
+	      }
+	      else {
+	        console.log('== Login POST Error');
+	        console.log(error);
+	      }
+	    }
+		);
+	}
 }
