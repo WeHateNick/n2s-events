@@ -5,9 +5,7 @@ import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
-
 import uiRouter from 'angular-ui-router';
-
 import ngMessages from 'angular-messages';
 import ngMaterial from 'angular-material';
 
@@ -24,8 +22,9 @@ import util from '../components/util/util.module';
 
 import './app.scss';
 
-angular.module('n2sEventsApp', [ngCookies, ngResource, ngSanitize, uiRouter, ngMessages, ngMaterial, navbar, footer, main,
-  constants, util
+angular.module('n2sEventsApp', [
+	ngCookies, ngResource, ngSanitize, uiRouter, ngMessages, ngMaterial, 
+	navbar, footer, main, constants, util
 ])
   .config(routeConfig);
 

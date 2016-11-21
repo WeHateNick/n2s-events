@@ -6,6 +6,7 @@ export function routeConfig($urlRouterProvider, $locationProvider, $mdThemingPro
   $urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode(true);
+  
   $mdThemingProvider.theme('default')
   	.dark()
     .primaryPalette('red')
