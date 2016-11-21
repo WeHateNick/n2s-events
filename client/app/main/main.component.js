@@ -24,14 +24,17 @@ export class MainController {
     var mockData = {content: 'Hello there'};
     this.login = () => {
       this.loginForm.loading = true;
-      this.$http.post('/api/login', mockData )
-      .then(response => {
-        this.loginForm.loading = false;
-        console.log('Login response:', response.data);
-      }, error => {
-        console.log('Login error', error);
-      });
+      // this.$http.post('/api/login', mockData )
+      // .then(response => {
+      //   this.loginForm.loading = false;
+      //   console.log('Login response:', response.data);
+      // }, error => {
+      //   console.log('Login error', error);
+      // });
     };
+    this.cancelLogin = () => {
+      this.loginForm.loading = false;
+    }
   }
 }
 
@@ -39,6 +42,7 @@ export default angular.module('n2sEventsApp.main', [uiRouter])
   .config(routing)
   .component('main', {
     template: require('./main.html'),
-    controller: MainController
+    controller: MainController,
+    controllerAs: '$ctrl'
   })
   .name;

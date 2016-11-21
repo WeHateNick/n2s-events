@@ -5,8 +5,7 @@
   <md-card flex flex-gt-sm="40">
     <md-card-content>
       <article ng-form="loginForm" aria-label="login form">
-        <h3 class="md-title">Login</h3>
-        <md-progress-linear ng-show="$clt.loginForm.loading" md-mode="indeterminate"></md-progress-linear>
+        <h3 class="md-headline">Log In</h3>
         <md-input-container>
           <label>Email</label>
           <input type="email" ng-model="$ctrl.loginForm.data.email">
@@ -16,10 +15,11 @@
           <input type="password" ng-model="$ctrl.loginForm.data.password">
         </md-input-container>
         <div layout="row" layout-align="end">
-          <md-button>Cancel</md-button>
-          <md-button class="md-accent" ng-click="$ctrl.login()">Submit</md-button>
+          <md-button ng-click="$ctrl.cancelLogin()">Cancel</md-button>
+          <md-button class="md-raised md-accent" ng-click="$ctrl.login()">Submit</md-button>
         </div>
       </article>
     </md-card-content>
+    <md-progress-linear ng-show="$ctrl.loginForm.loading" md-mode="indeterminate"></md-progress-linear>
   </md-card>
 </section>
