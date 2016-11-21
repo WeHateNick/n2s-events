@@ -14,7 +14,6 @@ var reqObj = {
 var baseUrl = 'https://n2sreno.clubspeedtiming.com/api/index.php/';
 var endpoint = 'customers/login/';
 const N2S_AUTH_KEY = '7VlopsPCbJeotMiXdCH4';
-
 // Gets a list of Logins
 export function index(req, res) {
 	request.post(
