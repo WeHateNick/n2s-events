@@ -5,6 +5,8 @@
 		<h2 class="md-title">Event Registration</h2>
 		<p ng-if="$ctrl.loading">Finding your event&hellip;</p>
 		<h2 class="md-title" ng-if="$ctrl.data.subject">Event name: {{$ctrl.data.subject}}</h2>
-		<p ng-if="$ctrl.data.startTime">Starts on {{$ctrl.data.startTime | date:'MMM dd, yyyy h:mm a'}}</p>
+		<p ng-if="$ctrl.data.startTime">Starts on {{$ctrl.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl.data.startTime | date:'h:mm a'}}</p>
+		<p>Already have an account?</p>
+		<md-button class="md-raised md-accent">Login</md-button>
 	</md-card-content>
 </md-card>
