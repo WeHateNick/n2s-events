@@ -13,14 +13,13 @@ var endpoint = 'eventReservations/';
 export function index(req, res) {
   var eventId = req.params.eventId;
   console.log('Event is set to ' + eventId);
-
 	request.get(
     base.url + endpoint + eventId + '/?key=' + base.authKey,
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log('Event:');
         console.log(body);
-				res.json(body);
+				res.send(body);
       }
       else {
         console.log('== Get event error');

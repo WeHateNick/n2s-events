@@ -1,1 +1,9 @@
-<div>This is the find view.</div>
+<md-card>
+	<md-progress-linear ng-if="$ctrl.loading" md-mode="indeterminate"></md-progress-linear>
+	<md-card-content>
+		<h1 class="md-display-1">Event Registration</h1>
+		<p ng-if="$ctrl.loading">Finding your event&hellip;</p>
+		<h2 class="md-title">{{$ctrl.data.subject}}</h2>
+		<p>{{$ctrl.data.startTime | date}} {{$ctrl.data.startTime | time}}</p>
+	</md-card-content>
+</md-card>

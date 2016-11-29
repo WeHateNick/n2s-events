@@ -4,7 +4,7 @@ export default function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('find', {
-      url: '/find',
+      url: '/find/:eventId',
       template: '<find></find>'
     });
 }
