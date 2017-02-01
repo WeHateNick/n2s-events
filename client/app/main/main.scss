@@ -1,6 +1,10 @@
+// Style Variables
+
 $font-family: 'Lato', sans-serif;
 $font-weight--regular: 400;
 $font-weight--italics: 400i;
+$box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
+$rule: thin solid rgba(0,0,0,0.12);
 
 body {
   font-family: $font-family;
@@ -8,4 +12,21 @@ body {
 }
 em {
   font-weight: $font-weight--italics
+}
+.top-bar {
+	background: #212121;
+	color: #FFF;
+	height: 1.5em;
+	padding: 0.5em 1em;
+	box-shadow: $box-shadow;
+}
+.main-header {
+	background: #323232;
+	text-align: center;
+	margin-bottom: 4em;
+	&__logo {
+		width: 200px;
+		height: auto;
+		padding: 1em;
+	}
 }
