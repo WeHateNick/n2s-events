@@ -1,17 +1,36 @@
-// Style Variables
+// == Style Variables
 
+$palette--accent: #F44336;
 $font-family: 'Lato', sans-serif;
 $font-weight--regular: 400;
 $font-weight--italics: 400i;
 $box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
 $rule: thin solid rgba(0,0,0,0.12);
+// ==
 
+// == Base fonts
 body {
   font-family: $font-family;
   font-weight: $font-weight--regular;
 }
 em {
   font-weight: $font-weight--italics
+}
+// ==
+
+// == Helpers
+.muted {
+	color: rgba(0, 0, 0, 0.52);
+}
+.muted-link {
+	color: rgba(0, 0, 0, 0.87);
+}
+// ==
+
+// == Components
+main.main {
+  background: #EEE;
+  padding-bottom: 4em;
 }
 .top-bar {
 	background: #212121;
@@ -30,3 +49,41 @@ em {
 		padding: 1em;
 	}
 }
+md-card-title.accent {
+	color: #FFF;
+	background: $palette--accent;
+}
+label.label {
+	@extend .muted;
+	margin-bottom: 0.5em;
+	font-size: 0.8em;
+}
+.event {
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+	&__name {
+		margin-top: 0em;
+	}
+}
+.cta-header {
+	text-align: center;
+}
+.login-form {
+	padding-right: 2em;
+	border-right: $rule;
+	md-input-container {
+		margin-top: 0;
+		margin-bottom: 0;
+		max-width: 300px;
+	}
+}
+.facebook-form {
+	padding-left: 2em;
+}
+.signup {
+	&__cta {
+		text-align: center;
+		margin-top: 1.5em;
+	}
+}
+// ==

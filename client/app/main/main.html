@@ -1,25 +1,53 @@
-<div class="top-bar">Event registration</div>
+<div class="top-bar">Need 2 Speed Events</div>
 <header class="main-header">
   <img class="main-header__logo" src="assets/images/n2s-logo.png">
 </header>
 <section layout="row" layout-align="center">
-  <md-card flex flex-gt-sm="40">
-    <md-card-content>
-      <article ng-form="loginForm" aria-label="login form">
-        <h3 class="md-headline">Log In</h3>
-        <md-input-container>
-          <label>Email</label>
-          <input type="email" ng-model="$ctrl.loginForm.data.username">
-        </md-input-container>
-        <md-input-container>
-          <label>Password</label>
-          <input type="password" ng-model="$ctrl.loginForm.data.password">
-        </md-input-container>
-        <div layout="row" layout-align="end">
-          <md-button ng-click="$ctrl.cancelLogin()">Cancel</md-button>
-          <md-button class="md-raised md-accent" ng-click="$ctrl.login()">Submit</md-button>
+  <md-card flex flex-gt-sm="60">
+    <md-card-title class="accent md-title">
+      Race event registration
+    </md-card-title>
+    <md-card-content layout="column" class="event">
+      <div>
+        <label class="label">Event name</label>
+        <h3 class="md-display-1 event__name">API Test Event</h3>
+      </div>
+      <div>
+        <label class="label">Scheduled for</label>
+        <div class="event__date">Feb 2, 2017 at 9:00 AM</div>
+      </div>
+      <div>
+        <div class="cta-header">
+          <h3 class="md-headline">Log in to register</h3>
         </div>
-      </article>
+        <div layout="row">
+          <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
+            <md-input-container>
+              <label>Email</label>
+              <input type="email" ng-model="$ctrl.loginForm.data.username">
+            </md-input-container>
+            <md-input-container>
+              <label>Password</label>
+              <input type="password" ng-model="$ctrl.loginForm.data.password">
+            </md-input-container>
+            <div layout="row">
+              <md-button class="md-raised md-primary" ng-click="$ctrl.login()">Log in</md-button>
+            </div>
+            <div>
+              <a href="#" class="muted-link">I forgot my password</a>
+            </div>
+          </div>
+          <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
+            <md-button class="md-raised md-accent" ng-click="$ctrl.login()">Log in with Facebook</md-button>
+            <p class="muted">
+              If you don’t have a Need 2 Speed account connected to Facebook, we’ll  create one for you.
+            </p>
+          </div>
+        </div>
+        <div class="signup__cta">
+          New here? <a href="#">Sign up</a>.
+        </div>
+      </div>
     </md-card-content>
     <md-progress-linear ng-show="$ctrl.loginForm.loading" md-mode="indeterminate"></md-progress-linear>
   </md-card>
