@@ -7,8 +7,9 @@ export class MainController {
   awesomeThings = [];
 
   /*@ngInject*/
-  constructor($http) {
+  constructor($http, $timeout) {
     this.$http = $http;
+    this.$timeout = $timeout;
   }
 
   $onInit() {
@@ -19,17 +20,22 @@ export class MainController {
     this.loginForm = {
       data: {},
       loading: false,
-      error: false
+      error: false,
+      success: false
     };
     this.login = () => {
       this.loginForm.loading = true;
-      this.$http.post('/api/login', this.loginForm.data )
-      .then(response => {
+      this.$timeout( () => {
         this.loginForm.loading = false;
-        console.log('Login response:', response.data);
-      }, error => {
-        console.log('Login error', error);
-      });
+        this.loginForm.success = true;
+      }, 2000);
+      // this.$http.post('/api/login', this.loginForm.data )
+      // .then(response => {
+      //   this.loginForm.loading = false;
+      //   console.log('Login response:', response.data);
+      // }, error => {
+      //   console.log('Login error', error);
+      // });
     };
     this.cancelLogin = () => {
       this.loginForm.loading = false;
