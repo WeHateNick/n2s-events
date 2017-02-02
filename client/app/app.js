@@ -38,7 +38,7 @@ import {
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
-import find from './find/find.component';
+import _event from './event/event.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 
@@ -46,7 +46,7 @@ import './app.scss';
 
 angular.module('n2sEventsApp', [
 	ngCookies, ngResource, ngSanitize, uiRouter, ngMessages, ngMaterial, 
-	navbar, footer, main, find, constants, util
+	navbar, footer, main, _event, constants, util
 ])
   .config(routeConfig);
 

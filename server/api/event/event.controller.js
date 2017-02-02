@@ -1,6 +1,6 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/find              ->  index
+ * GET     /api/event              ->  index
  */
 
 'use strict';
