@@ -24,11 +24,11 @@ export class EventComponent {
     this.login = () => {
       this.loginForm.loading = true;
       this.$http.post('/api/login', this.loginForm.data )
-      .then(response => {
-        console.log('Login response:', response.data);
+      .then((response) => {
+        console.log('Login response:', response);
         this.loginForm.loading = false;
         this.loginForm.success = true;
-      }, error => {
+      }, (error) => {
         console.log('Login error', error);
         this.loginForm.loading = false;
         this.loginForm.data = {};

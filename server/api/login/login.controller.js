@@ -22,14 +22,14 @@ export function post(req, res) {
     { json: reqData },
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('NEED 2 SPEED:');
+        console.log('== Login response:');
         console.log(body);
 				res.json(body);
       }
       else {
         console.log('== Login POST Error');
         console.log(error);
-				res.json(error).status('500');
+				res.status('500').send('Invalid login. Error: ' + error);
       }
     }
 	);
