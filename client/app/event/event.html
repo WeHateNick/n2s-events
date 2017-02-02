@@ -143,6 +143,9 @@
            <div layout="row">
              <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign up</md-button>
            </div>
+           <div class="login-form__password-reset-cta">
+             <a ng-click="$ctrl.resetState()" class="link--muted" aria-label="log in">I already have an account</a>
+           </div>
          </div>
        </div>
        <div ng-show="$ctrl._event.success">
