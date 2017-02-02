@@ -20,7 +20,7 @@ export class MainController {
       });
     this.loginForm = Object.create(this.util.newState);
     this.signupForm = Object.create(this.util.newState);
-    this.signupForm.active = true;
+    this.signupForm.active = false;
     this.signupForm.data.emailOptIn = true;
     this.genders = ['Male', 'Female', 'Other'];
     this.referalSources = ['Online', 'Television', 'Radio', 'Billboard', 'Coupon', 'Other'];
