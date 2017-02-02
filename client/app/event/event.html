@@ -4,8 +4,8 @@
 	<md-card-content>
 		<h2 class="md-headline">Event Registration</h2>
 		<p ng-if="$ctrl.loading">Finding your event&hellip;</p>
-		<h2 class="md-title" ng-if="$ctrl.data.subject">Event name: {{$ctrl.data.subject}}</h2>
-		<p ng-if="$ctrl.data.startTime">Starts on {{$ctrl.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl.data.startTime | date:'h:mm a'}}</p>
+		<h2 class="md-title" ng-if="$ctrl._event.data.subject">Event name: {{$ctrl._event.data.subject}}</h2>
+		<p ng-if="$ctrl._event.data.startTime">Starts on {{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</p>
 		<p>Already have an account?</p>
 		<md-button class="md-raised md-accent">Register</md-button>
 	</md-card-content>
@@ -25,12 +25,12 @@
      <md-card-content layout="column" class="event">
        <div>
          <label class="label">Event name</label>
-         <h3 class="md-display-1 event__name">{{$ctrl.data.subject}}</h3>
+         <h3 class="md-display-1 event__name">{{$ctrl._event.data.subject}}</h3>
        </div>
        <div layout="row" layout-wrap>
          <div flex="35">
            <label class="label">Scheduled for</label>
-           <div class="event__date">{{$ctrl.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl.data.startTime | date:'h:mm a'}}</div>
+           <div class="event__date">{{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</div>
          </div>
          <div flex="35">
            <label class="label">Location</label>
