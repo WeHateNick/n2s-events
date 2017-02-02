@@ -10,7 +10,7 @@ import base from '../../config/base.js';
 
 var endpoint = 'heatDetails/';
 
-export function post(req, res) {
+export function post (req, res) {
 	var reqData = req.body;
 	console.log('== Request data:');
 	console.log(reqData);
@@ -25,14 +25,9 @@ export function post(req, res) {
       }
       else {
         console.log('== Register POST Error');
-        console.log(error);
-				res.status('500').send('Registration failed. Error: ' + error);
+        console.log(body.error);
+				res.status('500').send('Registration failed. Error: ' + body.error.message);
       }
     }
 	);
-}
-
-// Registers a racer to an event
-export function index(req, res) {
-  res.json([]);
 }

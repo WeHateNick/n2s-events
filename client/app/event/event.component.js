@@ -69,7 +69,12 @@ export class EventComponent {
       }, (error) => {
         console.log('Registration error', error);
         this._event.loading = false;
-        this.util.showErrorDialog('An error occured while trying to register your account to the event.');
+        if ( error.data.search('Cannot insert duplicate key in object') ) {
+          this.util.showErrorDialog('This username is already registered to this event.', false);
+          this._event.success = true;
+        } else {
+          this.util.showErrorDialog('An error occured while trying to register your account to the event.');          
+        }
       });
     };
     this.resetState = () => {

@@ -251,7 +251,7 @@ export function UtilService($window, $mdDialog) {
         message = customMessage;
       }
       if (includeSupportLink !== false) {
-        message += 'Please try again or <a href="http://need2speed.com/contact/">contact Need 2 Speed support</a>.';        
+        message += ' Please try again or <a href="http://need2speed.com/contact/">contact Need 2 Speed support</a>.';        
       }
       $mdDialog.show(
         $mdDialog.alert()

@@ -5,7 +5,6 @@ var controller = require('./register.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
 router.post('/', controller.post);
 
 module.exports = router;

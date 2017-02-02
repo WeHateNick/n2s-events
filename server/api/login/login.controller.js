@@ -9,11 +9,8 @@ import request from 'request';
 import base from '../../config/base.js';
 
 var endpoint = 'customers/login/';
-// Gets a list of Logins
-export function index(req, res) {
-	
-}
-export function post(req, res) {
+
+export function post (req, res) {
 	var reqData = req.body;
 	console.log('== Request data:');
 	console.log(reqData);
