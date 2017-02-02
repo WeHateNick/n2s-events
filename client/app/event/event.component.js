@@ -18,8 +18,8 @@ export class EventComponent {
     this.signupForm = Object.create(this.util.newState);
     this.signupForm.active = false;
     this.signupForm.data.emailOptIn = true;
-    this.genders = ['Male', 'Female', 'Other'];
-    this.referalSources = ['Online', 'Television', 'Radio', 'Billboard', 'Coupon', 'Other'];
+    this.genders = [{label: 'Male', code: 1}, {label: 'Female', code: 2}, {label: 'Other', code: 0}];
+    this.referalSources = [{label: 'Online', code: 18}, {label: 'Television', code: 43}, {label: 'Radio', code: 45}, {label: 'Billboard', code: 34}, {label: 'Coupon', code: 47}, {label: 'Other', code: 15}];
 
     // Find the event
     this.$http.get('api/event/' + this.$stateParams.eventId)
@@ -49,12 +49,21 @@ export class EventComponent {
       this.signupForm.active = true;
     };
     this.signup = () => {
+      this.signup.data.donotemail = !this.signup.data.emailOptIn;
+      this.signup.data.membershipStatus = 1;
+      this.signup.data.status1 = 1;
       this._event.loading = true;
-      this.$timeout( () => {
+      this.$http.post('/api/signup', this.signup.data)
+      .then(response => {
+        console.log('Signup response:', response);
+        this.register(response.data);
+      }, error => {
+        console.log('Signup error', error);
         this._event.loading = false;
-        this._event.success = true;
-      }, 2000);
-    }
+        this.loginForm.data = {};
+        this.util.showErrorDialog('An error occurred while trying to create an account. ');
+      });
+    };
     this.register = (customerId) => {
       let requestData = {
         heatId: this.$stateParams.eventId,
@@ -74,6 +83,7 @@ export class EventComponent {
           this._event.success = true;
         } else {
           this.util.showErrorDialog('An error occured while trying to register your account to the event.');          
+          this.resetState();
         }
       });
     };

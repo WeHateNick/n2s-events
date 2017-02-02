@@ -93,11 +93,11 @@
            <div layout="row">
              <md-input-container flex flex-gt-sm="45">
                <label>First name</label>
-               <input type="text" required ng-model="$ctrl.signupForm.data.firstName" aria-label="first name">
+               <input type="text" required ng-model="$ctrl.signupForm.data.firstname" aria-label="first name">
              </md-input-container>
              <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
                <label>Last name</label>
-               <input type="text" required ng-model="$ctrl.signupForm.data.lastName" aria-label="last name">
+               <input type="text" required ng-model="$ctrl.signupForm.data.lastname" aria-label="last name">
              </md-input-container>
            </div>
            <div layout="row">
@@ -113,26 +113,26 @@
            <div layout="row">
              <md-input-container flex flex-gt-sm="50">
                <label>Zip code</label>
-               <input type="text" ng-model="$ctrl.signupForm.data.zipCode" aria-label="zip code">
+               <input type="text" ng-model="$ctrl.signupForm.data.Zip" aria-label="zip code">
              </md-input-container>
              <md-input-container flex flex-gt-sm="50">
-               <md-datepicker type="text" ng-model="$ctrl.signupForm.data.dob" placeholder="Date of birth" aria-label="date of birth"></md-datepicker>
+               <md-datepicker type="text" ng-model="$ctrl.signupForm.data.birthdate" placeholder="Date of birth" aria-label="date of birth"></md-datepicker>
              </md-input-container>
            </div>
            <div layout="row">
              <md-input-container flex flex-gt-sm="45">
                <label>Gender</label>
                <md-select ng-model="$ctrl.signupForm.data.gender" aria-label="gender">
-                 <md-option ng-repeat="gender in $ctrl.genders" ng-value="gender">
-                   {{gender}}
+                 <md-option ng-repeat="gender in $ctrl.genders" ng-value="gender.code">
+                   {{gender.label}}
                  </md-option>
                </md-select>
              </md-input-container>
              <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
                <label>How did you hear about us?</label>
-               <md-select ng-model="$ctrl.signupForm.data.hearAboutUs" aria-label="gender">
-                 <md-option ng-repeat="source in $ctrl.referalSources" ng-value="source">
-                   {{source}}
+               <md-select ng-model="$ctrl.signupForm.data.howdidyouhearaboutus" aria-label="How did you hear about us?">
+                 <md-option ng-repeat="source in $ctrl.referalSources" ng-value="source.code">
+                   {{source.label}}
                  </md-option>
                </md-select>
              </md-input-container>
