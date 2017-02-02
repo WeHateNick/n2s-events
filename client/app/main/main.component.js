@@ -18,12 +18,10 @@ export class MainController {
       .then(response => {
         this.awesomeThings = response.data;
       });
-    this.loginForm = {
-      data: {},
-      loading: false,
-      error: false,
-      success: false
-    };
+    this.loginForm = Object.create(this.util.newState);
+    this.signupForm = Object.create(this.util.newState);
+    this.signupForm.active = false;
+
     this.login = () => {
       this.loginForm.loading = true;
       this.$timeout( () => {
@@ -43,9 +41,9 @@ export class MainController {
       //   this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       // });
     };
-    this.cancelLogin = () => {
-      this.loginForm.loading = false;
-    }
+    this.signup = () => {
+      this.signupForm.active = true;
+    };
   }
 }
 

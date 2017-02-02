@@ -16,6 +16,10 @@ body {
 em {
   font-weight: $font-weight--italics
 }
+a[ng-click] {
+	text-decoration: underline;
+	cursor: pointer;
+}
 // ==
 
 // == Helpers

@@ -263,6 +263,13 @@ export function UtilService($window, $mdDialog) {
           .ok('Close')
           .targetEvent(event)
       );
+    },
+
+    newState: {
+      data: {},
+      loading: false,
+      error: false,
+      success: false
     }
 
   };
