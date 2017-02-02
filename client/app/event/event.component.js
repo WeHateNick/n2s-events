@@ -67,7 +67,8 @@ export class EventComponent {
         this._event.loading = false;
         this._event.success = true;
       }, (error) => {
-        console.log('Login error', error);
+        console.log('Registration error', error);
+        this._event.loading = false;
         this.util.showErrorDialog('An error occured while trying to register your account to the event.');
       });
     };
