@@ -65,8 +65,11 @@
         <div layout="column">
           <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Signup with Facebook</md-button>
         </div>
-        <div class="or-block" layout="row">
+        <div class="or__block" layout="row">
           <hr> or <hr>
+        </div>
+        <div class="or__cta">
+          Use your email
         </div>
         <div ng-form="signupForm" flex="60" aria-label="signup form" layout="column" class="signup-form">
           <md-input-container>
@@ -125,9 +128,6 @@
           </div>
           <div layout="row">
             <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign up</md-button>
-          </div>
-          <div class="login-form__password-reset-cta">
-            <a href="#" class="link--muted">I forgot my password</a>
           </div>
         </div>
       </div>

@@ -58,6 +58,7 @@ main.main {
 md-card-title.accent {
 	color: #FFF;
 	background: $palette--accent;
+	padding: 16px;
 }
 label.label {
 	@extend .muted;
@@ -94,6 +95,21 @@ label.label {
 	&__cta {
 		text-align: center;
 		margin-top: 1.5em;
+	}
+}
+.or {
+	&__block {
+		padding: 40px 20px;
+		hr {
+			width: 200px;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			border-bottom: $rule;
+		}
+	}
+	&__cta {
+		text-align: center;
 	}
 }
 // ==
