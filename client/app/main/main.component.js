@@ -7,9 +7,10 @@ export class MainController {
   awesomeThings = [];
 
   /*@ngInject*/
-  constructor($http, $timeout) {
+  constructor($http, $timeout, Util) {
     this.$http = $http;
     this.$timeout = $timeout;
+    this.util = Util;
   }
 
   $onInit() {
@@ -27,14 +28,19 @@ export class MainController {
       this.loginForm.loading = true;
       this.$timeout( () => {
         this.loginForm.loading = false;
-        this.loginForm.success = true;
+        this.loginForm.data = {};
+        this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       }, 2000);
       // this.$http.post('/api/login', this.loginForm.data )
       // .then(response => {
-      //   this.loginForm.loading = false;
       //   console.log('Login response:', response.data);
+      //   this.loginForm.loading = false;
+      //   this.loginForm.success = true;
       // }, error => {
       //   console.log('Login error', error);
+      //   this.loginForm.loading = false;
+      //   this.loginForm.data = {};
+      //   this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       // });
     };
     this.cancelLogin = () => {
