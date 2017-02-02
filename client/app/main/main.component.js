@@ -29,8 +29,7 @@ export class MainController {
       this.loginForm.loading = true;
       this.$timeout( () => {
         this.loginForm.loading = false;
-        this.loginForm.data = {};
-        this.util.showErrorDialog('The username and password combination did not match an existing account. ');
+        this.loginForm.success = true;
       }, 2000);
       // this.$http.post('/api/login', this.loginForm.data )
       // .then(response => {
@@ -44,8 +43,27 @@ export class MainController {
       //   this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       // });
     };
-    this.signup = () => {
+    this.openSignup = () => {
       this.signupForm.active = true;
+    };
+    this.signup = () => {
+      this.signupForm.loading = true;
+      this.$timeout( () => {
+        this.signupForm.loading = false;
+        this.signupForm.success = true;
+      }, 2000);
+    }
+    this.resetState = () => {
+      this.loginForm.loading = false;
+      this.loginForm.error = false;
+      this.loginForm.success = false;
+      this.loginForm.data = {};
+
+      this.signupForm.loading = false;
+      this.signupForm.error = false;
+      this.signupForm.success = false;
+      this.signupForm.active = false;
+      this.signupForm.data = {emailOptIn: true};
     };
   }
 }
