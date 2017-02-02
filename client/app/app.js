@@ -1,5 +1,26 @@
 'use strict';
 
+// Polyfills
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    if (typeof start !== 'number') {
+      start = 0;
+    }
+    if (start + search.length > this.length) {
+      return false;
+    } else {
+      return this.indexOf(search, start) !== -1;
+    }
+  };
+}
+if (typeof Object.create !== 'function') {
+  Object.create = obj => {
+    var Constructor = () => {};
+    Constructor.prototype = obj;
+    return new Constructor();
+  };
+}
+
 import angular from 'angular';
 import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies';

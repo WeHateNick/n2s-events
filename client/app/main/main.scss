@@ -16,14 +16,20 @@ body {
 em {
   font-weight: $font-weight--italics
 }
+a[ng-click] {
+	text-decoration: underline;
+	cursor: pointer;
+}
 // ==
 
 // == Helpers
 .muted {
 	color: rgba(0, 0, 0, 0.52);
 }
-.muted-link {
-	color: rgba(0, 0, 0, 0.87);
+.link {
+	&--muted {
+		color: rgba(0, 0, 0, 0.87);		
+	}
 }
 // ==
 
