@@ -13,24 +13,34 @@ export class EventComponent {
   }
   $onInit() {
     this._event = Object.create(this.util.newState);
+    this._event.loading = true;
     this.loginForm = Object.create(this.util.newState);
-    this.loginForm.loading = true;
     this.signupForm = Object.create(this.util.newState);
     this.signupForm.active = false;
     this.signupForm.data.emailOptIn = true;
     this.genders = ['Male', 'Female', 'Other'];
     this.referalSources = ['Online', 'Television', 'Radio', 'Billboard', 'Coupon', 'Other'];
 
+    // Find the event
+    this.$http.get('api/event/' + this.$stateParams.eventId)
+      .then( (response) => {
+        console.log('Event response', response);
+        this._event.loading = false;
+        this._event.data = response.data;
+      }, (error) => {
+        console.log('event event error', error);
+        this._event.loading = false;
+        this._event.error = true;
+      });
     this.login = () => {
-      this.loginForm.loading = true;
+      this._event.loading = true;
       this.$http.post('/api/login', this.loginForm.data )
       .then((response) => {
         console.log('Login response:', response);
-        this.loginForm.loading = false;
-        this.loginForm.success = true;
+        this.register(response.data.customerId);
       }, (error) => {
         console.log('Login error', error);
-        this.loginForm.loading = false;
+        this._event.loading = false;
         this.loginForm.data = {};
         this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       });
@@ -39,34 +49,36 @@ export class EventComponent {
       this.signupForm.active = true;
     };
     this.signup = () => {
-      this.signupForm.loading = true;
+      this._event.loading = true;
       this.$timeout( () => {
-        this.signupForm.loading = false;
-        this.signupForm.success = true;
+        this._event.loading = false;
+        this._event.success = true;
       }, 2000);
     }
+    this.register = (customerId) => {
+      let requestData = {
+        heatId: this.$stateParams.eventId,
+        customerId: customerId,
+        timeAdded: '2017-02-01T00:18:42.43', // Update with moment!!
+      };
+      this.$http.post('/api/register', requestData )
+      .then((response) => {
+        console.log('Registration response:', response);
+        this._event.loading = false;
+        this._event.success = true;
+      }, (error) => {
+        console.log('Login error', error);
+        this.util.showErrorDialog('An error occured while trying to register your account to the event.');
+      });
+    };
     this.resetState = () => {
-      this.loginForm.loading = false;
+      this._event.loading = false;
+      this._event.success = false;
       this.loginForm.error = false;
-      this.loginForm.success = false;
       this.loginForm.data = {};
-
-      this.signupForm.loading = false;
-      this.signupForm.error = false;
-      this.signupForm.success = false;
       this.signupForm.active = false;
       this.signupForm.data = {emailOptIn: true};
     };
-    this.$http.get('api/event/' + this.$stateParams.eventId)
-      .then( (response) => {
-        console.log('Event response', response);
-        this.loginForm.loading = false;
-        this._event.data = response.data;
-      }, (error) => {
-        console.log('event event error', error);
-        this.loginForm.loading = false;
-        this._event.error = true;
-      });
   };
 }
 

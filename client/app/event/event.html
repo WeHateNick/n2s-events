@@ -21,7 +21,7 @@
      <md-card-title class="accent md-title">
        Event registration
      </md-card-title>
-     <md-progress-linear ng-show="$ctrl.loginForm.loading || $ctrl.signupForm.loading" md-mode="indeterminate"></md-progress-linear>
+     <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
      <md-card-content layout="column" class="event">
        <div>
          <label class="label">Event name</label>
@@ -40,7 +40,7 @@
            </div>
          </div>
        </div>
-       <div ng-hide="$ctrl.loginForm.success || $ctrl.signupForm.active">
+       <div ng-hide="$ctrl._event.success || $ctrl.signupForm.active">
          <div class="cta-header">
            <h3 class="md-headline">Log in to register</h3>
          </div>
@@ -72,7 +72,7 @@
            New here? <a ng-click="$ctrl.openSignup()" aria-label="signup">Sign up</a>
          </div>
        </div>
-       <div ng-show="$ctrl.signupForm.active && !$ctrl.signupForm.success">
+       <div ng-show="$ctrl.signupForm.active && !$ctrl._event.success">
          <div class="cta-header">
            <h3 class="md-headline">Sign up for a new account</h3>
          </div>
@@ -145,7 +145,7 @@
            </div>
          </div>
        </div>
-       <div ng-show="$ctrl.loginForm.success || $ctrl.signupForm.success">
+       <div ng-show="$ctrl._event.success">
          <div class="cta-header">
            <h3 class="md-headline">Registration complete</h3>
          </div>
@@ -153,6 +153,6 @@
          <a ng-click="$ctrl.resetState()" class="link--muted">Register another racer</a>
        </div>
      </md-card-content>
-     <md-progress-linear ng-show="$ctrl.loginForm.loading || $ctrl.signupForm.loading" md-mode="indeterminate"></md-progress-linear>
+     <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
    </md-card>
  </section>
