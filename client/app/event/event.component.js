@@ -20,7 +20,6 @@ export class EventComponent {
     this.signupForm.data.emailOptIn = true;
     this.genders = [{label: 'Male', code: 1}, {label: 'Female', code: 2}, {label: 'Other', code: 0}];
     this.referalSources = [{label: 'Online', code: 18}, {label: 'Television', code: 43}, {label: 'Radio', code: 45}, {label: 'Billboard', code: 34}, {label: 'Coupon', code: 47}, {label: 'Other', code: 15}];
-
     // Find the event
     this.$http.get('api/event/' + this.$stateParams.eventId)
       .then( (response) => {
@@ -68,7 +67,7 @@ export class EventComponent {
       let requestData = {
         heatId: this.$stateParams.eventId,
         customerId: customerId,
-        timeAdded: '2017-02-01T00:18:42.43', // Update with moment!!
+        timeAdded: new Date().toISOString()
       };
       this.$http.post('/api/register', requestData )
       .then((response) => {
