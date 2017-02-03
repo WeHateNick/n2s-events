@@ -1,147 +1,145 @@
- <div class="top-bar"><strong>Need 2 Speed Events</strong></div>
- <header class="main-header">
-   <img class="main-header__logo" src="assets/images/n2s-logo.png">
- </header>
- <section layout="row" layout-align="center">
-   <md-card flex flex-gt-sm="60">
-     <md-card-title class="accent md-title">
-       Event registration
-     </md-card-title>
-     <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
-     <md-card-content layout="column" class="event">
-       <div>
-         <label class="label">Event name</label>
-         <h3 class="md-display-1 event__name">{{$ctrl._event.data.subject}}</h3>
-       </div>
-       <div layout="row" layout-wrap>
-         <div flex="35">
-           <label class="label">Scheduled for</label>
-           <div class="event__date">{{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</div>
-         </div>
-         <div flex="35">
-           <label class="label">Location</label>
-           <div class="event__date">
-             <div class="address__line1">6895-B Sierra Center Parkway <sup><a href="https://www.google.com/maps/place/Need+2+Speed/@39.464382,-119.778717,16z/data=!4m5!3m4!1s0x0:0xf777a3489788fbe0!8m2!3d39.4641932!4d-119.7787694?hl=en-US" target="_blank" class="fa fa-map-marker"></a></sup></div>
-             <div class="address__line1">Reno, NV 89511</div>
-           </div>
-         </div>
-       </div>
-       <div ng-hide="$ctrl._event.success || $ctrl.signupForm.active">
-         <div class="cta-header">
-           <h3 class="md-headline">Log in to register</h3>
-         </div>
-         <div layout="row">
-           <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
-             <md-input-container>
-               <label>Email</label>
-               <input type="email" ng-model="$ctrl.loginForm.data.username" aria-label="email">
-             </md-input-container>
-             <md-input-container>
-               <label>Password</label>
-               <input type="password" ng-model="$ctrl.loginForm.data.password" aria-label="password">
-             </md-input-container>
-             <div layout="row">
-               <md-button class="md-raised md-primary" ng-click="$ctrl.login()" aria-label="log in">Log in</md-button>
-             </div>
-             <div class="login-form__password-reset-cta">
-               <a href="#" class="link--muted" aria-label="forgot my password">I forgot my password</a>
-             </div>
-           </div>
-           <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
-             <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
-             <p class="muted">
-               If you don’t have a Need 2 Speed account connected to Facebook, we’ll  create one for you.
-             </p>
-           </div>
-         </div>
-         <div class="signup__cta">
-           New here? <a ng-click="$ctrl.openSignup()" aria-label="signup">Sign up</a>
-         </div>
-       </div>
-       <div ng-show="$ctrl.signupForm.active && !$ctrl._event.success">
-         <div class="cta-header">
-           <h3 class="md-headline">Sign up for a new account</h3>
-         </div>
-         <div layout="column">
-           <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Signup with Facebook</md-button>
-         </div>
-         <div class="or__block" layout="row">
-           <hr> or <hr>
-         </div>
-         <div class="or__cta">
-           Use your email
-         </div>
-         <div ng-form="signupForm" flex="60" aria-label="signup form" layout="column" class="signup-form">
-           <md-input-container>
-             <label>Username</label>
-             <input type="text" required ng-model="$ctrl.signupForm.data.racername" aria-label="username">
-           </md-input-container>
-           <div layout="row">
-             <md-input-container flex flex-gt-sm="45">
-               <label>First name</label>
-               <input type="text" required ng-model="$ctrl.signupForm.data.firstname" aria-label="first name">
-             </md-input-container>
-             <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
-               <label>Last name</label>
-               <input type="text" required ng-model="$ctrl.signupForm.data.lastname" aria-label="last name">
-             </md-input-container>
-           </div>
-           <div layout="row">
-             <md-input-container flex flex-gt-sm="45">
-               <label>Email</label>
-               <input type="email" ng-model="$ctrl.signupForm.data.email" aria-label="email">
-             </md-input-container>
-             <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
-               <label>Password</label>
-               <input type="password" ng-model="$ctrl.signupForm.data.password" aria-label="password">
-             </md-input-container>
-           </div>
-           <div layout="row">
-             <md-input-container flex flex-gt-sm="50">
-               <label>Zip code</label>
-               <input type="text" ng-model="$ctrl.signupForm.data.Zip" aria-label="zip code">
-             </md-input-container>
-             <md-input-container flex flex-gt-sm="50">
-               <md-datepicker type="text" ng-model="$ctrl.signupForm.data.birthdate" md-current-view="year" placeholder="Date of birth" aria-label="date of birth"></md-datepicker>
-             </md-input-container>
-           </div>
-           <div layout="row">
-             <md-input-container flex flex-gt-sm="45">
-               <label>Gender</label>
-               <md-select ng-model="$ctrl.signupForm.data.gender" aria-label="gender">
-                 <md-option ng-repeat="gender in $ctrl.genders" ng-value="gender.code">
-                   {{gender.label}}
-                 </md-option>
-               </md-select>
-             </md-input-container>
-             <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
-               <label>How did you hear about us?</label>
-               <md-select ng-model="$ctrl.signupForm.data.howdidyouhearaboutus" aria-label="How did you hear about us?">
-                 <md-option ng-repeat="source in $ctrl.referalSources" ng-value="source.code">
-                   {{source.label}}
-                 </md-option>
-               </md-select>
-             </md-input-container>
-           </div>
-           <div layout="row">
-             <md-checkbox ng-model="$ctrl.signupForm.data.emailOptIn">I would like to receive race results and special offers from Need 2 Speed</md-checkbox>
-           </div>
-           <div layout="row">
-             <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign up</md-button>
-           </div>
-           <div class="login-form__password-reset-cta">
-             <a ng-click="$ctrl.resetState()" class="link--muted" aria-label="log in">I already have an account</a>
-           </div>
-         </div>
-       </div>
-       <div ng-show="$ctrl._event.success">
-         <div class="cta-header">
-           <h3 class="md-headline">Registration complete</h3>
-         </div>
-         <p>You successfully registered to a race. Thank you for choosing Need 2 Speed.</p>
-         <a ng-click="$ctrl.resetState()" class="link--muted">Register another racer</a>
-       </div>
-     </md-card-content>
-     <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
-   </md-card>
- </section>
+<section layout="row" layout-align="center">
+  <md-card flex flex-gt-sm="60">
+    <md-card-title class="accent md-title">
+      Event registration
+    </md-card-title>
+    <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
+    <md-card-content layout="column" class="event">
+      <div>
+        <label class="label">Event name</label>
+        <h3 class="md-display-1 event__name">{{$ctrl._event.data.subject}}</h3>
+      </div>
+      <div layout="row" layout-wrap>
+        <div flex="35">
+          <label class="label">Scheduled for</label>
+          <div class="event__date">{{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</div>
+        </div>
+        <div flex="35">
+          <label class="label">Location</label>
+          <div class="event__date">
+            <div class="address__line1">6895-B Sierra Center Parkway <sup><a href="https://www.google.com/maps/place/Need+2+Speed/@39.464382,-119.778717,16z/data=!4m5!3m4!1s0x0:0xf777a3489788fbe0!8m2!3d39.4641932!4d-119.7787694?hl=en-US" target="_blank" class="fa fa-map-marker"></a></sup>
+            </div>
+            <div class="address__line1">Reno, NV 89511</div>
+          </div>
+        </div>
+      </div>
+      <div ng-hide="$ctrl._event.success || $ctrl.signupForm.active">
+        <div class="cta-header">
+          <h3 class="md-headline">Log in to register</h3>
+        </div>
+        <div layout="row">
+          <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
+            <md-input-container>
+              <label>Email</label>
+              <input type="email" ng-model="$ctrl.loginForm.data.username" aria-label="email">
+            </md-input-container>
+            <md-input-container>
+              <label>Password</label>
+              <input type="password" ng-model="$ctrl.loginForm.data.password" aria-label="password">
+            </md-input-container>
+            <div layout="row">
+              <md-button class="md-raised md-primary" ng-click="$ctrl.login()" aria-label="log in">Log in</md-button>
+            </div>
+            <div class="login-form__password-reset-cta">
+              <a href="#" class="link--muted" aria-label="forgot my password">I forgot my password</a>
+            </div>
+          </div>
+          <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
+            <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
+            <p class="muted">
+              If you don’t have a Need 2 Speed account connected to Facebook, we’ll create one for you.
+            </p>
+          </div>
+        </div>
+        <div class="signup__cta">
+          New here? <a ng-click="$ctrl.openSignup()" aria-label="signup">Sign up</a>
+        </div>
+      </div>
+      <div ng-show="$ctrl.signupForm.active && !$ctrl._event.success">
+        <div class="cta-header">
+          <h3 class="md-headline">Sign up for a new account</h3>
+        </div>
+        <div layout="column">
+          <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Signup with Facebook</md-button>
+        </div>
+        <div class="or__block" layout="row">
+          <hr> or
+          <hr>
+        </div>
+        <div class="or__cta">
+          Use your email
+        </div>
+        <div ng-form="signupForm" flex="60" aria-label="signup form" layout="column" class="signup-form">
+          <md-input-container>
+            <label>Username</label>
+            <input type="text" required ng-model="$ctrl.signupForm.data.racername" aria-label="username">
+          </md-input-container>
+          <div layout="row">
+            <md-input-container flex flex-gt-sm="45">
+              <label>First name</label>
+              <input type="text" required ng-model="$ctrl.signupForm.data.firstname" aria-label="first name">
+            </md-input-container>
+            <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
+              <label>Last name</label>
+              <input type="text" required ng-model="$ctrl.signupForm.data.lastname" aria-label="last name">
+            </md-input-container>
+          </div>
+          <div layout="row">
+            <md-input-container flex flex-gt-sm="45">
+              <label>Email</label>
+              <input type="email" ng-model="$ctrl.signupForm.data.email" aria-label="email">
+            </md-input-container>
+            <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
+              <label>Password</label>
+              <input type="password" ng-model="$ctrl.signupForm.data.password" aria-label="password">
+            </md-input-container>
+          </div>
+          <div layout="row">
+            <md-input-container flex flex-gt-sm="50">
+              <label>Zip code</label>
+              <input type="text" ng-model="$ctrl.signupForm.data.Zip" aria-label="zip code">
+            </md-input-container>
+            <md-input-container flex flex-gt-sm="50">
+              <md-datepicker type="text" ng-model="$ctrl.signupForm.data.birthdate" md-current-view="year" placeholder="Date of birth" aria-label="date of birth"></md-datepicker>
+            </md-input-container>
+          </div>
+          <div layout="row">
+            <md-input-container flex flex-gt-sm="45">
+              <label>Gender</label>
+              <md-select ng-model="$ctrl.signupForm.data.gender" aria-label="gender">
+                <md-option ng-repeat="gender in $ctrl.genders" ng-value="gender.code">
+                  {{gender.label}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
+              <label>How did you hear about us?</label>
+              <md-select ng-model="$ctrl.signupForm.data.howdidyouhearaboutus" aria-label="How did you hear about us?">
+                <md-option ng-repeat="source in $ctrl.referalSources" ng-value="source.code">
+                  {{source.label}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div layout="row">
+            <md-checkbox ng-model="$ctrl.signupForm.data.emailOptIn">I would like to receive race results and special offers from Need 2 Speed</md-checkbox>
+          </div>
+          <div layout="row">
+            <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign up</md-button>
+          </div>
+          <div class="login-form__password-reset-cta">
+            <a ng-click="$ctrl.resetState()" class="link--muted" aria-label="log in">I already have an account</a>
+          </div>
+        </div>
+      </div>
+      <div ng-show="$ctrl._event.success">
+        <div class="cta-header">
+          <h3 class="md-headline">Registration complete</h3>
+        </div>
+        <p>You successfully registered to a race. Thank you for choosing Need 2 Speed.</p>
+        <a ng-click="$ctrl.resetState()" class="link--muted">Register another racer</a>
+      </div>
+    </md-card-content>
+    <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
+  </md-card>
+</section>

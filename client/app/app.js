@@ -39,6 +39,7 @@ import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import _event from './event/event.component';
+import resetPassword from './reset-password/reset-password.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 
@@ -46,7 +47,7 @@ import './app.scss';
 
 angular.module('n2sEventsApp', [
 	ngCookies, ngResource, ngSanitize, uiRouter, ngMessages, ngMaterial, 
-	navbar, footer, main, _event, constants, util
+	navbar, footer, main, _event, constants, util, resetPassword
 ])
   .config(routeConfig);
 
