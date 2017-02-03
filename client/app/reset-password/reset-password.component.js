@@ -7,11 +7,23 @@ import routes from './reset-password.routes';
 
 export class ResetPasswordComponent {
   /*@ngInject*/
-  constructor($http) {
+  constructor($http, Util) {
     this.$http = $http;
+    this.util = Util;
   }
   $onInit() {
-    this.submit = (email) => console.log('Email:', email);    
+    this.submit = (email) => {
+      this.loading = true;
+      this.$http.post('api/reset-password/', {email: email})
+        .then( (response) => {
+          console.log('Event response', response);
+          this.loading = false;
+          this.success = true;
+        }, (error) => {
+          console.log('event event error', error);
+          this.util.showErrorDialog('We did not find that email address in our system. ');
+        });
+    }    
   }
 }
 
