@@ -1,6 +1,7 @@
 // == Style Variables
 
 $palette--accent: #F44336;
+$palette--app-bg: #EEE;
 $font-family: 'Lato', sans-serif;
 $font-weight--regular: 400;
 $font-weight--italics: 400i;
@@ -12,6 +13,7 @@ $rule: thin solid rgba(0,0,0,0.12);
 body {
   font-family: $font-family;
   font-weight: $font-weight--regular;
+  background: $palette--app-bg;
 }
 em {
   font-weight: $font-weight--italics
@@ -35,7 +37,7 @@ a[ng-click] {
 
 // == Components
 main.main {
-  background: #EEE;
+  background: $palette--app-bg;
   padding-bottom: 4em;
 }
 .top-bar {

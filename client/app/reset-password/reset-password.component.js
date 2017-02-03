@@ -7,8 +7,11 @@ import routes from './reset-password.routes';
 
 export class ResetPasswordComponent {
   /*@ngInject*/
-  constructor() {
-    this.message = 'Hello';
+  constructor($http) {
+    this.$http = $http;
+  }
+  $onInit() {
+    this.submit = (email) => console.log('Email:', email);    
   }
 }
 
@@ -17,6 +20,6 @@ export default angular.module('n2sEventsApp.reset-password', [uiRouter])
   .component('resetPassword', {
     template: require('./reset-password.html'),
     controller: ResetPasswordComponent,
-    controllerAs: 'resetPasswordCtrl'
+    controllerAs: '$ctrl'
   })
   .name;
