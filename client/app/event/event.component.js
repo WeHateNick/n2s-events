@@ -44,31 +44,40 @@ export class EventComponent {
       });
     };
     this.facebookLogin = () => {
-      FB.login(function (response) {
+      FB.login(response => {
         // handle the response
         if (response.authResponse) {
-          console.log('Welcome!  Fetching your information.... ');
+          let authResponse = response.authResponse;
           FB.api('/me', { locale: 'en_US', fields: 'name, email' },
-            function(response) {
+            response => {
               console.log('Good to see you', response);
+              let requestData = {
+                email: response.email,
+                facebookId: authResponse.userID,
+                facebookToken:authResponse.accessToken,
+                facebookExpiresIn: authResponse.expiresIn,
+                facebookAllowEmail: true,
+                facebookAllowPost: false,
+                facebookEnabled: true
+              };
+              this.$http.post('/api/facebook-login', requestData)
+                .then((response) => {
+                  console.log('Facebook login response:', response);
+                  this._event.loading = false;
+                  this.register(response.data.customerId);
+                }, (error) => {
+                  console.log('Facebook login error', error);
+                  this._event.loading = false;
+                  this.loginForm.data = {};
+                  this.util.showErrorDialog('We were unable to log you in via Facebook.');
+                });
             }
           );
         } else {
           console.log('User cancelled login or did not fully authorize.');
+          this.resetState();
         }
         console.log('Facebook initial response', response);
-        // let request = {
-        //   {
-        //     "email": "bob@clubspeed.com",
-        //     "facebookId": "652712592679",
-        //     "facebookToken":"AVNAWIVYANIWVUDBAWKUGDVBAWIDVYNLAWDVHNAWILDVHUNAWIULDVHNLAWIDVHUNAWUILDVHNAWILDVHN",
-        //     "facebookExpiresIn": 9999,
-        //     "facebookAllowEmail": true,
-        //     "facebookAllowPost": true,
-        //     "facebookEnabled": true
-        //   }
-        // };
-        // this.$http.post('/api/facebook-login', request);
       }, {scope: 'email', return_scopes: true});
     };
     this.openSignup = () => {

@@ -51,10 +51,7 @@
             </div>
           </div>
           <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
-            <md-button class="md-raised md-accent" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
-            <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-            </fb:login-button> -->
-            <!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> -->
+            <md-button class="md-raised md-accent facebook-btn" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
             <p class="muted">
               If you don’t have a Need 2 Speed account connected to Facebook, we’ll create one for you.
             </p>
@@ -68,8 +65,10 @@
         <div class="cta-header">
           <h3 class="md-headline">Sign up for a new account</h3>
         </div>
-        <div layout="column">
-          <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Signup with Facebook</md-button>
+        <div layout="column" class="cta-header">
+          <div>
+            <md-button class="md-raised md-accent facebook-btn" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook-official"></i> Sign up with Facebook</md-button>
+          </div>
         </div>
         <div class="or__block" layout="row">
           <hr> or

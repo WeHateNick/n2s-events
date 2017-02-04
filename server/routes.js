@@ -9,6 +9,7 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/facebook-login/', require('./api/facebook-login'));
   app.use('/api/reset-password', require('./api/reset-password'));
   app.use('/api/signup', require('./api/signup'));
   app.use('/api/register', require('./api/register'));
