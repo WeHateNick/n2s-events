@@ -43,6 +43,34 @@ export class EventComponent {
         this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       });
     };
+    this.facebookLogin = () => {
+      FB.login(function (response) {
+        // handle the response
+        if (response.authResponse) {
+          console.log('Welcome!  Fetching your information.... ');
+          FB.api('/me', { locale: 'en_US', fields: 'name, email' },
+            function(response) {
+              console.log('Good to see you', response);
+            }
+          );
+        } else {
+          console.log('User cancelled login or did not fully authorize.');
+        }
+        console.log('Facebook initial response', response);
+        // let request = {
+        //   {
+        //     "email": "bob@clubspeed.com",
+        //     "facebookId": "652712592679",
+        //     "facebookToken":"AVNAWIVYANIWVUDBAWKUGDVBAWIDVYNLAWDVHNAWILDVHUNAWIULDVHNLAWIDVHUNAWUILDVHNAWILDVHN",
+        //     "facebookExpiresIn": 9999,
+        //     "facebookAllowEmail": true,
+        //     "facebookAllowPost": true,
+        //     "facebookEnabled": true
+        //   }
+        // };
+        // this.$http.post('/api/facebook-login', request);
+      }, {scope: 'email', return_scopes: true});
+    };
     this.openSignup = () => {
       this.signupForm.active = true;
     };

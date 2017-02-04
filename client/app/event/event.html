@@ -51,7 +51,10 @@
             </div>
           </div>
           <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
-            <md-button class="md-raised md-accent" ng-click="$ctrl.login()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
+            <md-button class="md-raised md-accent" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
+            <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button> -->
+            <!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> -->
             <p class="muted">
               If you don’t have a Need 2 Speed account connected to Facebook, we’ll create one for you.
             </p>
