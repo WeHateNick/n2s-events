@@ -10,11 +10,11 @@
         <h3 class="md-display-1 event__name">{{$ctrl._event.data.subject}}</h3>
       </div>
       <div layout="row" layout-wrap>
-        <div flex="35">
+        <div flex="100" flex-gt-sm="40" class="event__detail">
           <label class="label">Scheduled for</label>
           <div class="event__date">{{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</div>
         </div>
-        <div flex="35">
+        <div flex="100" flex-gt-sm="40" class="event__detail">
           <label class="label">Location</label>
           <div class="event__date">
             <div class="address__line1">6895-B Sierra Center Parkway <sup><a href="https://www.google.com/maps/place/Need+2+Speed/@39.464382,-119.778717,16z/data=!4m5!3m4!1s0x0:0xf777a3489788fbe0!8m2!3d39.4641932!4d-119.7787694?hl=en-US" target="_blank" class="fa fa-map-marker"></a></sup>
@@ -27,7 +27,7 @@
         <div class="cta-header">
           <h3 class="md-headline">Log in to register</h3>
         </div>
-        <div layout="row">
+        <div layout="column" layout-gt-sm="row">
           <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
             <md-input-container>
               <label>Email</label>
@@ -41,7 +41,7 @@
               <md-button class="md-raised md-primary" ng-click="$ctrl.login()" aria-label="log in">Log in</md-button>
             </div>
             <div class="login-form__password-reset-cta">
-              <a href="#" class="link--muted" aria-label="forgot my password">I forgot my password</a>
+              <a ui-sref="resetPassword" class="link--muted" aria-label="forgot my password">I forgot my password</a>
             </div>
           </div>
           <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
@@ -72,7 +72,10 @@
         <div ng-form="signupForm" flex="60" aria-label="signup form" layout="column" class="signup-form">
           <md-input-container>
             <label>Username</label>
-            <input type="text" required ng-model="$ctrl.signupForm.data.racername" aria-label="username">
+            <input type="text" required ng-model="$ctrl.signupForm.data.racername" aria-label="username" name="username">
+            <div ng-messages="signupForm.username.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
           </md-input-container>
           <div layout="row">
             <md-input-container flex flex-gt-sm="45">
