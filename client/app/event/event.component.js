@@ -23,7 +23,6 @@ export class EventComponent {
     // Find the event
     this.$http.get('api/event/' + this.$stateParams.eventId)
       .then( (response) => {
-        console.log('Event response', response);
         this._event.loading = false;
         this._event.data = response.data;
       }, (error) => {
