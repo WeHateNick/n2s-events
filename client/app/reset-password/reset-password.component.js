@@ -16,10 +16,10 @@ export class ResetPasswordComponent {
       this.loading = true;
       this.$http.post('api/reset-password/', {email: email})
         .then( (response) => {
-          console.log('Event response', response);
           this.loading = false;
           this.success = true;
         }, (error) => {
+          this.loading = false;
           console.log('event event error', error);
           this.util.showErrorDialog('We did not find that email address in our system. ');
         });

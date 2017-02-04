@@ -7,8 +7,24 @@ import routes from './new-password.routes';
 
 export class NewPasswordComponent {
   /*@ngInject*/
-  constructor() {
-    this.message = 'Hello';
+  constructor($http, Util, $stateParams) {
+    this.$http = $http;
+    this.util = Util;
+    this.$stateParams = $stateParams;
+  }
+  $onInit() {
+    this.submit = (password) => {
+      this.loading = true;
+      this.$http.put('api/reset-password/', {password: password, token: this.$stateParams.token})
+        .then( (response) => {
+          this.loading = false;
+          this.success = true;
+        }, (error) => {
+          this.loading = false;
+          console.log('New password error', error);
+          this.util.showErrorDialog('We were unable to set a new password to your account. Please make sure you have the full link included in the reset email.');
+        });
+    }    
   }
 }
 
@@ -17,6 +33,6 @@ export default angular.module('n2sEventsApp.newPassword', [uiRouter])
   .component('newPassword', {
     template: require('./new-password.html'),
     controller: NewPasswordComponent,
-    controllerAs: 'newPasswordCtrl'
+    controllerAs: '$ctrl'
   })
   .name;
