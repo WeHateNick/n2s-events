@@ -31,11 +31,17 @@
           <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
             <md-input-container>
               <label>Email</label>
-              <input type="email" ng-model="$ctrl.loginForm.data.username" aria-label="email">
+              <input type="email" ng-model="$ctrl.loginForm.data.username" aria-label="email" required name="email">
+              <div ng-messages="loginForm.email.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
             <md-input-container>
               <label>Password</label>
-              <input type="password" ng-model="$ctrl.loginForm.data.password" aria-label="password">
+              <input type="password" ng-model="$ctrl.loginForm.data.password" aria-label="password" required name="password">
+              <div ng-messages="loginForm.password.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
             <div layout="row">
               <md-button class="md-raised md-primary" ng-click="$ctrl.login()" aria-label="log in">Log in</md-button>
@@ -80,11 +86,17 @@
           <div layout="row">
             <md-input-container flex flex-gt-sm="45">
               <label>First name</label>
-              <input type="text" required ng-model="$ctrl.signupForm.data.firstname" aria-label="first name">
+              <input type="text" required ng-model="$ctrl.signupForm.data.firstname" aria-label="first name" name="firstName">
+              <div ng-messages="signupForm.firstName.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
             <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
               <label>Last name</label>
-              <input type="text" required ng-model="$ctrl.signupForm.data.lastname" aria-label="last name">
+              <input type="text" required ng-model="$ctrl.signupForm.data.lastname" aria-label="last name" name="lastName">
+              <div ng-messages="signupForm.lastName.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
           </div>
           <div layout="row">
