@@ -1,15 +1,15 @@
-<section layout="row" layout-align="center">
+<section layout="column" layout-gt-sm="row" layout-align="center">
   <md-card flex flex-gt-sm="60">
     <md-card-title class="accent md-title">
       Event registration
     </md-card-title>
     <md-progress-linear ng-show="$ctrl._event.loading" md-mode="indeterminate"></md-progress-linear>
     <md-card-content layout="column" class="event">
-      <div>
+      <div flex>
         <label class="label">Event name</label>
         <h3 class="md-display-1 event__name">{{$ctrl._event.data.subject}}</h3>
       </div>
-      <div layout="row" layout-wrap>
+      <div flex layout="row" layout-wrap>
         <div flex="100" flex-gt-sm="40" class="event__detail">
           <label class="label">Scheduled for</label>
           <div class="event__date">{{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</div>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div ng-hide="$ctrl._event.success || $ctrl.signupForm.active">
+      <div flex ng-hide="$ctrl._event.success || $ctrl.signupForm.active">
         <div class="cta-header">
           <h3 class="md-headline">Log in to register</h3>
         </div>
@@ -50,9 +50,8 @@
               <a ui-sref="resetPassword" target="_blank" class="link--muted" aria-label="forgot my password">I forgot my password</a>
             </div>
           </div>
-          <div class="or__block" layout="row" hide-gt-sm>
-            <hr> or
-            <hr>
+          <div flex class="or__block" layout="row" layout-align="center" hide-gt-sm>
+            or
           </div>
           <div ng-form="facebookForm" flex="50" aria-label="login form" layout="column" class="facebook-form">
             <md-button class="md-raised md-accent facebook-btn" ng-click="$ctrl.facebookLogin()"><i class="fa fa-facebook-official"></i> Register with Facebook</md-button>
@@ -65,7 +64,7 @@
           New here? <a ng-click="$ctrl.openSignup()" aria-label="signup">Sign up</a>
         </div>
       </div>
-      <div ng-show="$ctrl.signupForm.active && !$ctrl._event.success">
+      <div flex ng-show="$ctrl.signupForm.active && !$ctrl._event.success">
         <div class="cta-header">
           <h3 class="md-headline">Sign up for a new account</h3>
         </div>
@@ -146,7 +145,7 @@
             <md-checkbox ng-model="$ctrl.signupForm.data.emailOptIn">I would like to receive race results and special offers from Need 2 Speed</md-checkbox>
           </div>
           <div layout="row">
-            <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign up</md-button>
+            <md-button class="md-raised md-primary" ng-click="$ctrl.signup()" ng-disabled="signupForm.$invalid">Sign up</md-button>
           </div>
           <div class="login-form__password-reset-cta">
             <a ng-click="$ctrl.resetState()" class="link--muted" aria-label="log in">I already have an account</a>

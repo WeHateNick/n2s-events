@@ -118,7 +118,7 @@ label.label {
 }
 .login-form {
 	@extend .input-form;
-	@include layout--gt-sm {
+	@include layout--lg {
 		border-right: $rule;		
 	}
 	&__password-reset-cta {
@@ -126,6 +126,7 @@ label.label {
 	}
 }
 .facebook-form {
+	text-align: center;
 	padding-left: 2em;
 }
 .facebook-btn {
@@ -139,6 +140,7 @@ label.label {
 }
 .or {
 	&__block {
+		text-align: center;
 		padding: 40px 20px;
 		hr {
 			width: 200px;
