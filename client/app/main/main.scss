@@ -5,8 +5,30 @@ $palette--app-bg: #EEE;
 $font-family: 'Lato', sans-serif;
 $font-weight--regular: 400;
 $font-weight--italics: 400i;
+$breakpoint--sm: 600px;
+$breakpoint--lg: 960px;
 $box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
 $rule: thin solid rgba(0,0,0,0.12);
+@mixin layout--sm {
+  @media (max-width: #{$breakpoint--sm}) {
+    @content;
+  }
+}
+@mixin layout--gt-sm {
+  @media (min-width: #{$breakpoint--sm}) {
+    @content;
+  }
+}
+@mixin layout--md {
+  @media (min-width: #{$breakpoint--sm}) and (max-width: #{$breakpoint--lg - 1px}) {
+    @content;
+  }
+}
+@mixin layout--lg {
+  @media (min-width: #{$breakpoint--lg}) {
+    @content;
+  }
+}
 // ==
 
 // == Base fonts
@@ -93,7 +115,9 @@ label.label {
 }
 .login-form {
 	@extend .input-form;
-	border-right: $rule;
+	@include layout--gt-sm {
+		border-right: $rule;		
+	}
 	&__password-reset-cta {
 		margin-top: 1em;
 	}
