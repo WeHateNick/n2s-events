@@ -17,7 +17,7 @@ export function post (req, res) {
 	console.log(reqData);
 	request.post(
     base.url + endpoint + '?key=' + base.authKey,
-    { json: {email: reqData.email, url: 'http://localhost:3000/new-password'} },
+    { json: {email: reqData.email, url: 'http://events.need2speed.com/new-password'} },
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log('== Reset password response:');
