@@ -37,22 +37,24 @@ export class EventComponent {
         console.log('Login response:', response);
         this.register(response.data.customerId);
       }, (error) => {
-        console.log('Login error', error);
+        console.log('Login error', error.message);
         this._event.loading = false;
         this.loginForm.data = {};
         this.util.showErrorDialog('The username and password combination did not match an existing account. ');
       });
     };
     this.facebookLogin = () => {
-      FB.login(response => {
+      FB.login( response => {
         // handle the response
         if (response.authResponse) {
           let authResponse = response.authResponse;
-          FB.api('/me', { locale: 'en_US', fields: 'name, email' },
+          FB.api('/me', { locale: 'en_US', fields: 'first_name, last_name, email' },
             response => {
               console.log('Good to see you', response);
               let requestData = {
                 email: response.email,
+                firstname: response.first_name,
+                lastname: response.last_name,
                 facebookId: authResponse.userID,
                 facebookToken:authResponse.accessToken,
                 facebookExpiresIn: authResponse.expiresIn,

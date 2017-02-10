@@ -26,7 +26,7 @@ export function post (req, res) {
       else {
         console.log('== Facebook login POST Error');
         console.log(error);
-				res.status('500').send('Invalid login. Error: ' + error);
+				res.status('500').json(body.error);
       }
     }
 	);
