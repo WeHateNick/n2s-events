@@ -8,7 +8,7 @@
 import request from 'request';
 import base from '../../config/base.js';
 
-var endpoint = 'heatDetails/';
+var endpoint = 'eventHeatDetails/';
 
 export function post (req, res) {
 	var reqData = req.body;

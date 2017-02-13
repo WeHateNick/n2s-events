@@ -26,7 +26,7 @@ export function post (req, res) {
       else {
         console.log('== Login POST Error');
         console.log(error);
-				res.status('500').send('Invalid login. Error: ' + body.error);
+				res.status('500').send('Invalid login. Error: ' + body.error.message);
       }
     }
 	);
