@@ -37,7 +37,7 @@ export class EventComponent {
         console.log('Login response:', response);
         this.register(response.data.customerId);
       }, (error) => {
-        console.log('Login error', error.message);
+        console.log('Login error', error);
         this._event.loading = false;
         this.loginForm.data = {};
         this.util.showErrorDialog('The username and password combination did not match an existing account. ');
@@ -88,7 +88,7 @@ export class EventComponent {
     this.signup = () => {
       this.signupForm.data.donotemail = !this.signupForm.data.emailOptIn;
       this.signupForm.data.membershipStatus = 1;
-      this.signupForm.data.status1 = 1;
+      this.signupForm.data.status1 = 0;
       this._event.loading = true;
       this.$http.post('/api/signup', this.signupForm.data)
       .then(response => {
@@ -103,9 +103,9 @@ export class EventComponent {
     };
     this.register = (customerId) => {
       let requestData = {
-        heatId: this.$stateParams.eventId,
+        eventId: this.$stateParams.eventId,
         customerId: customerId,
-        timeAdded: new Date().toISOString()
+        added: new Date().toISOString()
       };
       this.$http.post('/api/register', requestData )
       .then((response) => {

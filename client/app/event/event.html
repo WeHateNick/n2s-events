@@ -7,12 +7,12 @@
     <md-card-content layout="column" class="event">
       <div flex>
         <label class="label">Event name</label>
-        <h3 class="md-display-1 event__name">{{$ctrl._event.data.subject}}</h3>
+        <h3 class="md-display-1 event__name">{{$ctrl._event.data.eventDesc}}</h3>
       </div>
       <div flex layout="row" layout-wrap>
         <div flex="100" flex-gt-sm="40" class="event__detail">
           <label class="label">Scheduled for</label>
-          <div class="event__date">{{$ctrl._event.data.startTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.startTime | date:'h:mm a'}}</div>
+          <div class="event__date">{{$ctrl._event.data.eventScheduledTime | date:'MMM dd, yyyy'}} at {{$ctrl._event.data.eventScheduledTime | date:'h:mm a'}}</div>
         </div>
         <div flex="100" flex-gt-sm="40" class="event__detail">
           <label class="label">Location</label>
@@ -30,14 +30,14 @@
         <div layout="column" layout-gt-sm="row">
           <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
             <md-input-container>
-              <label>Email</label>
+              <label>Email*</label>
               <input type="email" ng-model="$ctrl.loginForm.data.username" aria-label="email" required name="email">
               <div ng-messages="loginForm.email.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
             <md-input-container>
-              <label>Password</label>
+              <label>Password*</label>
               <input type="password" ng-model="$ctrl.loginForm.data.password" aria-label="password" required name="password">
               <div ng-messages="loginForm.password.$error">
                 <div ng-message="required">This is required.</div>
@@ -107,20 +107,32 @@
           <div layout="column" layout-gt-sm="row">
             <md-input-container flex flex-gt-sm="45">
               <label>Email</label>
-              <input type="email" ng-model="$ctrl.signupForm.data.email" aria-label="email">
+              <input type="email" ng-model="$ctrl.signupForm.data.email" aria-label="email" required name="email">
+              <div ng-messages="signupForm.email.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
             <md-input-container flex flex-gt-sm="50" flex-offset-gt-sm="5">
               <label>Password</label>
-              <input type="password" ng-model="$ctrl.signupForm.data.password" aria-label="password">
+              <input type="password" ng-model="$ctrl.signupForm.data.password" aria-label="password" required>
+              <div ng-messages="signupForm.password.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
           </div>
           <div layout="column" layout-gt-sm="row">
-            <md-input-container flex flex-gt-sm="50">
+            <md-input-container flex flex-gt-sm="45">
               <label>Zip code</label>
-              <input type="text" ng-model="$ctrl.signupForm.data.Zip" aria-label="zip code">
+              <input type="text" ng-model="$ctrl.signupForm.data.Zip" aria-label="zip code" required name="zipCode">
+              <div ng-messages="signupForm.zipCode.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
             <md-input-container flex flex-gt-sm="50">
-              <md-datepicker type="text" ng-model="$ctrl.signupForm.data.birthdate" md-current-view="year" placeholder="Date of birth" aria-label="date of birth"></md-datepicker>
+              <md-datepicker type="text" ng-model="$ctrl.signupForm.data.birthdate" md-current-view="year" placeholder="Date of birth" aria-label="date of birth" required name="dob"></md-datepicker>
+              <div ng-messages="signupForm.dob.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
             </md-input-container>
           </div>
           <div layout="column" layout-gt-sm="row">
