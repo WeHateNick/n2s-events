@@ -11,10 +11,10 @@ var endpoint = 'events/';
 
 // Get info for an event by id
 export function index (req, res) {
-  var eventId = req.params.eventId;
-  console.log('Event is set to ' + eventId);
+  var reservationId = req.params.eventId;
+  console.log('Event is set to ' + reservationId);
 	request.get(
-    base.url + endpoint + eventId + '/?key=' + base.authKey,
+    base.url + endpoint + '?where={"reservationId": ' + reservationId + '}' + '&key=' + base.authKey,
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log('Event:');
