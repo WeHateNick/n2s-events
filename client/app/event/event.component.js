@@ -5,9 +5,10 @@ import routes from './event.routes';
 
 export class EventComponent {
   /*@ngInject*/
-  constructor($http, $stateParams, Util, $timeout) {
+  constructor($http, $stateParams, $state, Util, $timeout) {
     this.$http = $http;
     this.$stateParams = $stateParams;
+    this.$state = $state;
     this.util = Util;
     this.$timeout = $timeout;
   }
@@ -24,7 +25,11 @@ export class EventComponent {
     this.$http.get('api/event/' + this.$stateParams.eventId)
       .then( (response) => {
         this._event.loading = false;
-        this._event.data = response.data;
+        if (response.data.length === 1) {
+          this._event.data = response.data[0];          
+        } else {
+          this.$state.go('main');
+        }
       }, (error) => {
         console.log('event event error', error);
         this._event.loading = false;
@@ -103,7 +108,7 @@ export class EventComponent {
     };
     this.register = (customerId) => {
       let requestData = {
-        eventId: this.$stateParams.eventId,
+        eventId: this._event.data.eventId,
         customerId: customerId,
         added: new Date().toISOString()
       };

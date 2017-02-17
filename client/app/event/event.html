@@ -30,14 +30,14 @@
         <div layout="column" layout-gt-sm="row">
           <div ng-form="loginForm" flex="50" aria-label="login form" layout="column" class="login-form">
             <md-input-container>
-              <label>Email*</label>
+              <label>Email</label>
               <input type="email" ng-model="$ctrl.loginForm.data.username" aria-label="email" required name="email">
               <div ng-messages="loginForm.email.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
             <md-input-container>
-              <label>Password*</label>
+              <label>Password</label>
               <input type="password" ng-model="$ctrl.loginForm.data.password" aria-label="password" required name="password">
               <div ng-messages="loginForm.password.$error">
                 <div ng-message="required">This is required.</div>
@@ -80,13 +80,10 @@
         <div class="or__cta">
           Use your email
         </div>
-        <div ng-form="signupForm" flex flex-gt-sm="60" aria-label="signup form" layout="column" class="signup-form">
+        <div ng-form="signupForm" flex flex-gt-sm="80" aria-label="signup form" layout="column" class="signup-form">
           <md-input-container>
-            <label>Username</label>
-            <input type="text" required ng-model="$ctrl.signupForm.data.racername" aria-label="username" name="username">
-            <div ng-messages="signupForm.username.$error">
-              <div ng-message="required">This is required.</div>
-            </div>
+            <label>Racer name</label>
+            <input type="text" ng-model="$ctrl.signupForm.data.racername" aria-label="username" name="username">
           </md-input-container>
           <div layout="column" layout-gt-sm="row">
             <md-input-container flex flex-gt-sm="45">
