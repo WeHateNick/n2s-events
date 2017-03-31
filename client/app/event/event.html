@@ -61,7 +61,8 @@
           </div>
         </div>
         <div class="signup__cta">
-          New here? <a ng-click="$ctrl.openSignup()" aria-label="signup">Sign up</a>
+          <p>New here? <md-button class="md-raised" ng-click="$ctrl.openSignup()" aria-label="signup">Sign up</md-button></p> 
+          <p></p>
         </div>
       </div>
       <div flex ng-show="$ctrl.signupForm.active && !$ctrl._event.success">
