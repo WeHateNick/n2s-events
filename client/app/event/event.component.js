@@ -93,7 +93,7 @@ export class EventComponent {
     this.signup = () => {
       this.signupForm.data.donotemail = !this.signupForm.data.emailOptIn;
       this.signupForm.data.membershipStatus = 1;
-      this.signupForm.data.status1 = 0;
+      this.signupForm.data.status1 = 1;
       this._event.loading = true;
       this.$http.post('/api/signup', this.signupForm.data)
       .then(response => {
